@@ -9,7 +9,7 @@ Wrappers for integer types to enable Blueprint/UPROPERTY/UFUNCTION support in Un
 
 This plugin adds wrappers to expose additional integer types to the reflection system in Unreal Engine 5.3+.
 
-It was created as a workaround while waiting for approval for https://github.com/EpicGames/UnrealEngine/pull/11652
+It was created as a workaround while waiting for approval for https://github.com/EpicGames/UnrealEngine/pull/11660
 
 ## Usage
 
