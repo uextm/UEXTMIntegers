@@ -40,6 +40,10 @@
 	WRAPPER_ARITHMETIC_ASSIGNMENT_OPERATOR(WRAPPER_TYPE, ^) \
 	WRAPPER_ARITHMETIC_ASSIGNMENT_OPERATOR(WRAPPER_TYPE, <<) \
 	WRAPPER_ARITHMETIC_ASSIGNMENT_OPERATOR(WRAPPER_TYPE, >>) \
+	friend FArchive& operator<<(FArchive& Ar, WRAPPER_TYPE& Wrapper) { \
+		Wrapper.Serialize(Ar); \
+		return Ar; \
+	} \
 	bool Identical(const WRAPPER_TYPE* Other, const uint32 PortFlags) const { \
 		return Other && Get() == Other->Get(); \
 	} \
