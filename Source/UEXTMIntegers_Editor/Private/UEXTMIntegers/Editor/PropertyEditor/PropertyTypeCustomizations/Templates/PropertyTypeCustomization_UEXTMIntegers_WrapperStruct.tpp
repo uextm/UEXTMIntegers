@@ -47,15 +47,19 @@ void TPropertyTypeCustomization_UEXTMIntegers_WrapperStruct<WrapperType, ValueTy
 {
 	Internal_StructPropertyHandle = StructPropertyHandle.ToSharedPtr();
 
+	const bool bEnabled = StructPropertyHandle->IsEditable();
+
 	HeaderRow.NameWidget[
 		StructPropertyHandle->CreatePropertyNameWidget(StructPropertyHandle->GetPropertyDisplayName())
-	];
+	]
+	.IsEnabled(bEnabled);
 	
 	HeaderRow.ValueWidget[
 		SNew(SNumericEntryBox<ValueType>)
 		.Value(this, &TPropertyTypeCustomization_UEXTMIntegers_WrapperStruct::GetValue)
 		.OnValueCommitted(this, &TPropertyTypeCustomization_UEXTMIntegers_WrapperStruct::SetValue)
-	];
+	]
+	.IsEnabled(bEnabled);
 }
 
 template<typename WrapperType, typename ValueType>
