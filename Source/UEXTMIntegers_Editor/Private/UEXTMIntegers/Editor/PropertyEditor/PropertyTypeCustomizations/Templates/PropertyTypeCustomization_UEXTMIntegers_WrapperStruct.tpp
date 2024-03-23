@@ -4,7 +4,6 @@
 #pragma once
 
 #include "PropertyEditing.h"
-#include "Widgets/Layout/SBox.h"
 #include "Widgets/Input/SNumericEntryBox.h"
 
 template<typename WrapperType, typename ValueType>
@@ -46,18 +45,19 @@ void TPropertyTypeCustomization_UEXTMIntegers_WrapperStruct<WrapperType, ValueTy
 template<typename WrapperType, typename ValueType>
 void TPropertyTypeCustomization_UEXTMIntegers_WrapperStruct<WrapperType, ValueType>::CustomizeHeader(TSharedRef<IPropertyHandle> StructPropertyHandle, FDetailWidgetRow& HeaderRow, IPropertyTypeCustomizationUtils& StructCustomizationUtils)
 {
-}
-
-template<typename WrapperType, typename ValueType>
-void TPropertyTypeCustomization_UEXTMIntegers_WrapperStruct<WrapperType, ValueType>::CustomizeChildren(TSharedRef<IPropertyHandle> StructPropertyHandle, IDetailChildrenBuilder& StructBuilder, IPropertyTypeCustomizationUtils& StructCustomizationUtils)
-{
 	Internal_StructPropertyHandle = StructPropertyHandle.ToSharedPtr();
+
+	HeaderRow.NameWidget[
+		StructPropertyHandle->CreatePropertyNameWidget(StructPropertyHandle->GetPropertyDisplayName())
+	];
 	
-	StructBuilder.AddCustomRow(INVTEXT("Value"))
-	.NameContent()[StructPropertyHandle->CreatePropertyNameWidget(StructPropertyHandle->GetPropertyDisplayName())]
-	.ValueContent()[
+	HeaderRow.ValueWidget[
 		SNew(SNumericEntryBox<ValueType>)
 		.Value(this, &TPropertyTypeCustomization_UEXTMIntegers_WrapperStruct::GetValue)
 		.OnValueCommitted(this, &TPropertyTypeCustomization_UEXTMIntegers_WrapperStruct::SetValue)
 	];
 }
+
+template<typename WrapperType, typename ValueType>
+void TPropertyTypeCustomization_UEXTMIntegers_WrapperStruct<WrapperType, ValueType>::CustomizeChildren(TSharedRef<IPropertyHandle> StructPropertyHandle, IDetailChildrenBuilder& StructBuilder, IPropertyTypeCustomizationUtils& StructCustomizationUtils)
+{ }
