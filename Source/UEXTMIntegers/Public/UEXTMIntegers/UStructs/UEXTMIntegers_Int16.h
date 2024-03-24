@@ -20,7 +20,7 @@ private:
 	// FScriptBuilderBase::EmitTermExpr handles literal UStructs
 	// It should always match Value
 	UPROPERTY()
-	FString Internal_ValueString = "";
+	FString Internal_ValueString;
 
 	WRAPPER_PROPERTIES(int16)
 	

@@ -5,7 +5,7 @@
 
 #define LOCTEXT_NAMESPACE "UBPLibrary_UEXTMIntegers_KismetMath"
 
-const FName DivideByZeroWarning = FName("DivideByZeroWarning");
+const FName DivideByZeroWarning = FName(TEXT("DivideByZeroWarning"));
 
 FUEXTMIntegers_UInt16 UBPLibrary_UEXTMIntegers_KismetMath::Multiply_UInt16UInt16(FUEXTMIntegers_UInt16 A, FUEXTMIntegers_UInt16 B)
 {
